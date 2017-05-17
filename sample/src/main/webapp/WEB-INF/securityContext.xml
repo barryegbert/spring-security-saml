@@ -120,6 +120,7 @@
                         <property name="idpDiscoveryEnabled" value="true"/>
                     </bean>
                 </property>
+                <property name="entityBaseURL" value="http://127.0.0.1:8080/spring-security-saml2-sample"/>
             </bean>
         </constructor-arg>
     </bean>
@@ -170,15 +171,25 @@
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
-                <!-- Example of file system metadata without Extended Metadata -->
-                <!--
-                <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
+                <bean class="org.springframework.security.saml.metadata.ExtendedMetadataDelegate">
                     <constructor-arg>
-                        <value type="java.io.File">/usr/local/metadata/idp.xml</value>
+                        <bean class="org.opensaml.saml2.metadata.provider.ResourceBackedMetadataProvider">
+                            <constructor-arg>
+                                <bean class="java.util.Timer"/>
+                            </constructor-arg>
+                            <constructor-arg>
+                                <bean class="org.opensaml.util.resource.ClasspathResource">
+                                    <constructor-arg value="/metadata/mhv-idp-metadata.xml"/>
+                                </bean>
+                            </constructor-arg>
+                            <property name="parserPool" ref="parserPool"/>
+                        </bean>
                     </constructor-arg>
-                    <property name="parserPool" ref="parserPool"/>
+                    <constructor-arg>
+                        <bean class="org.springframework.security.saml.metadata.ExtendedMetadata">
+                        </bean>
+                    </constructor-arg>
                 </bean>
-                -->
             </list>
         </constructor-arg>
         <!-- OPTIONAL used when one of the metadata files contains information about this service provider -->

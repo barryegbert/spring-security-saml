@@ -14,9 +14,12 @@
  */
 package org.springframework.security.saml.processor;
 
+import java.util.List;
+
 import org.apache.velocity.app.VelocityEngine;
 import org.opensaml.common.binding.security.SAMLProtocolMessageXMLSignatureSecurityPolicyRule;
 import org.opensaml.common.xml.SAMLConstants;
+import org.opensaml.liberty.binding.decoding.MhvCustomURIComparator;
 import org.opensaml.saml2.binding.decoding.HTTPArtifactDecoderImpl;
 import org.opensaml.saml2.binding.encoding.HTTPArtifactEncoder;
 import org.opensaml.ws.message.decoder.MessageDecoder;
@@ -30,8 +33,6 @@ import org.opensaml.xml.parse.ParserPool;
 import org.opensaml.xml.signature.SignatureTrustEngine;
 import org.springframework.security.saml.context.SAMLMessageContext;
 import org.springframework.security.saml.websso.ArtifactResolutionProfile;
-
-import java.util.List;
 
 /**
  * Http artifact binding.
@@ -49,6 +50,10 @@ public class HTTPArtifactBinding extends SAMLBindingImpl {
      */
     public HTTPArtifactBinding(ParserPool parserPool, VelocityEngine velocityEngine, ArtifactResolutionProfile artifactProfile) {
         this(new HTTPArtifactDecoderImpl(artifactProfile, parserPool), new HTTPArtifactEncoder(velocityEngine, "/templates/saml2-post-artifact-binding.vm", null));
+        
+        // override URI comparator 
+        HTTPArtifactDecoderImpl messageDecoder = (HTTPArtifactDecoderImpl) this.getMessageDecoder();
+		messageDecoder.setURIComparator(new MhvCustomURIComparator());
     }
 
     /**

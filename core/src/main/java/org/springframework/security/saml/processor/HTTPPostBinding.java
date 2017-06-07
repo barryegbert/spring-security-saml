@@ -14,9 +14,12 @@
  */
 package org.springframework.security.saml.processor;
 
+import java.util.List;
+
 import org.apache.velocity.app.VelocityEngine;
 import org.opensaml.common.binding.security.SAMLProtocolMessageXMLSignatureSecurityPolicyRule;
 import org.opensaml.common.xml.SAMLConstants;
+import org.opensaml.liberty.binding.decoding.MhvCustomURIComparator;
 import org.opensaml.saml2.binding.decoding.HTTPPostDecoder;
 import org.opensaml.saml2.binding.encoding.HTTPPostEncoder;
 import org.opensaml.saml2.binding.security.SAML2HTTPPostSimpleSignRule;
@@ -31,8 +34,6 @@ import org.opensaml.ws.transport.http.HTTPTransport;
 import org.opensaml.xml.parse.ParserPool;
 import org.opensaml.xml.signature.SignatureTrustEngine;
 import org.springframework.security.saml.context.SAMLMessageContext;
-
-import java.util.List;
 
 /**
  * Http POST binding.
@@ -54,6 +55,9 @@ public class HTTPPostBinding extends SAMLBindingImpl {
      */
     public HTTPPostBinding(ParserPool parserPool, VelocityEngine velocityEngine) {
         this(parserPool, new HTTPPostDecoder(parserPool), new HTTPPostEncoder(velocityEngine, "/templates/saml2-post-binding.vm"));
+        
+        HTTPPostDecoder messageDecoder = (HTTPPostDecoder) this.getMessageDecoder();
+		messageDecoder.setURIComparator(new MhvCustomURIComparator());
     }
 
     /**

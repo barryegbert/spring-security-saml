@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor entityID="MHV-IDP"
+	xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+	<md:IDPSSODescriptor ID="MHV-IDP"
+		WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+		<md:KeyDescriptor use="signing">
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509Certificate>MIIDYzCCAksCBgFcYAX88zANBgkqhkiG9w0BAQUFADB1MRAwDgYDVQQDDAdNSFYtSURQMRAwDgYD
+						VQQLDAdWQSBPSSZUMRYwFAYDVQQKDA1NeSBIZWFsdGhlVmV0MRIwEAYDVQQHDAlDdWxwZXBwZXIx
+						CzAJBgNVBAgMAlZBMRYwFAYDVQQGEw1Vbml0ZWQgU3RhdGVzMB4XDTE3MDUzMTE5NDAyNFoXDTE4
+						MDUyMjE5NDAyNFowdTEQMA4GA1UEAwwHTUhWLUlEUDEQMA4GA1UECwwHVkEgT0kmVDEWMBQGA1UE
+						CgwNTXkgSGVhbHRoZVZldDESMBAGA1UEBwwJQ3VscGVwcGVyMQswCQYDVQQIDAJWQTEWMBQGA1UE
+						BhMNVW5pdGVkIFN0YXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMqPDYEX5ryd
+						FPuWzruJCnA8uw0ymGpP9k9Uu1fsKL+lWUwo5Lh1LvN6GS+U+8sIdu0JkHupT45ZksMgx/VUAn1k
+						1XXER8+PFZmCk+rl8V4NfVWVa+Ap0QI2O5ZgbkzzJwedOMiGaPCmbgl9mnJg/FEfFwaEFb/kN//d
+						Sofi1lOg9LwhwLSIOW1xXh52PEks5MvlevQKW/TFSRnBV29oYFQV6ttcxk6pKtczpHczBnLDOQq5
+						K3BO8lPkA+kN6AqFRDoSxfZWIJV2NljcrQNlZcu7nmZtc3i6VIUD9iPaeHw1N7j+NpNp3DORGBAC
+						Q1glErVcMViSoZ/MIrGHokCRAV8CAwEAATANBgkqhkiG9w0BAQUFAAOCAQEAlDcX1tB+Z17xrp94
+						akJnzCVLurUK3PRzGsD6tlmDETd6ZgPw/AsVVjcmJQ4RVvd9CfxCnjY8NKoAZeSzbLXImqYGApJa
+						UyuvpnORb66k8pMbZBQTp/xRTMpBBcumq07N0j+KY5GjkuS5gllC/GX6K5DwRhvQK+3kkTXPyGrz
+						Z/uQTDPSj4RY5F4usPLcZbmLyIG9EkYBFZfFT7aMX+Cg4am2aVjHpYe5+j3P6zzW5e1XTLGAXW07
+						aySemZdMadm8zDsNkMO/GUg0ChFde61zduwGa4ECEFhlUH2xl/JHEukoLRj+yPmvOcFsxIrt3zN9
+						COtEO8BvHGXfDCT7UxSgWA==</ds:X509Certificate>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</md:KeyDescriptor>
+		<md:SingleLogoutService
+			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+			Location="https://mhv-intb.myhealth.va.gov/mhv-portal-web/c/portal/saml/slo" />
+		<md:SingleLogoutService
+			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+			Location="https://mhv-intb.myhealth.va.gov/mhv-portal-web/c/portal/saml/slo" />
+		<md:SingleSignOnService
+			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+			Location="https://mhv-intb.myhealth.va.gov/mhv-portal-web/c/portal/saml/sso" />
+		<md:SingleSignOnService
+			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+			Location="https://mhv-intb.myhealth.va.gov/mhv-portal-web/c/portal/saml/sso" />
+	</md:IDPSSODescriptor>
+</md:EntityDescriptor>

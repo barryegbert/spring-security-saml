@@ -120,7 +120,7 @@
                         <property name="idpDiscoveryEnabled" value="true"/>
                     </bean>
                 </property>
-                <property name="entityBaseURL" value="http://127.0.0.1:8080/spring-security-saml2-sample"/>
+                <property name="entityBaseURL" value="https://127.0.0.1:8443/spring-security-saml2-sample"/>
             </bean>
         </constructor-arg>
     </bean>
@@ -179,7 +179,7 @@
                             </constructor-arg>
                             <constructor-arg>
                                 <bean class="org.opensaml.util.resource.ClasspathResource">
-                                    <constructor-arg value="/metadata/mhv-idp-metadata.xml"/>
+                                    <constructor-arg value="/metadata/mhv-intb-metadata.xml"/>
                                 </bean>
                             </constructor-arg>
                             <property name="parserPool" ref="parserPool"/>

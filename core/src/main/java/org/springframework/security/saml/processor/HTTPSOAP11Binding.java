@@ -14,8 +14,13 @@
  */
 package org.springframework.security.saml.processor;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.opensaml.common.binding.security.SAMLProtocolMessageXMLSignatureSecurityPolicyRule;
 import org.opensaml.common.xml.SAMLConstants;
+import org.opensaml.liberty.binding.decoding.MhvCustomURIComparator;
 import org.opensaml.saml2.binding.decoding.HTTPSOAP11DecoderImpl;
 import org.opensaml.saml2.binding.encoding.HTTPSOAP11Encoder;
 import org.opensaml.ws.message.decoder.MessageDecoder;
@@ -28,9 +33,6 @@ import org.opensaml.ws.transport.http.HttpServletRequestAdapter;
 import org.opensaml.xml.parse.ParserPool;
 import org.opensaml.xml.signature.SignatureTrustEngine;
 import org.springframework.security.saml.context.SAMLMessageContext;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * Http SOAP 1.1 binding.
@@ -46,6 +48,9 @@ public class HTTPSOAP11Binding extends SAMLBindingImpl {
      */
     public HTTPSOAP11Binding(ParserPool parserPool) {
         this(new HTTPSOAP11DecoderImpl(parserPool), new HTTPSOAP11Encoder());
+        
+        HTTPSOAP11DecoderImpl messageDecoder = (HTTPSOAP11DecoderImpl) this.getMessageDecoder();
+		messageDecoder.setURIComparator(new MhvCustomURIComparator());
     }
 
     /**

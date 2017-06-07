@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
 	ID="http___127.0.0.1_8080_spring-security-saml2-sample_saml_metadata"
-	entityID="http://127.0.0.1:8080/spring-security-saml2-sample/saml/metadata">
+	entityID="http://127.0.0.1:7321/spring-security-saml2-sample/saml/metadata">
 	<md:SPSSODescriptor AuthnRequestsSigned="true"
 		WantAssertionsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 		<md:KeyDescriptor use="signing">
@@ -50,10 +50,10 @@
 		</md:KeyDescriptor>
 		<md:SingleLogoutService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-			Location="http://127.0.0.1:8080/spring-security-saml2-sample/saml/SingleLogout" />
+			Location="http://127.0.0.1:7321/spring-security-saml2-sample/saml/SingleLogout" />
 		<md:SingleLogoutService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-			Location="http://127.0.0.1:8080/spring-security-saml2-sample/saml/SingleLogout" />
+			Location="http://127.0.0.1:7321/spring-security-saml2-sample/saml/SingleLogout" />
 		<md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
 		</md:NameIDFormat>
 		<md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient
@@ -65,11 +65,11 @@
 		<md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName
 		</md:NameIDFormat>
 		<md:AssertionConsumerService
-			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://127.0.0.1:8080/spring-security-saml2-sample/saml/SSO"
+			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://127.0.0.1:7321/spring-security-saml2-sample/saml/SSO"
 			index="0" isDefault="true" />
 		<md:AssertionConsumerService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
-			Location="http://127.0.0.1:8080/spring-security-saml2-sample/saml/SSO"
+			Location="http://127.0.0.1:7321/spring-security-saml2-sample/saml/SSO"
 			index="1" />
 	</md:SPSSODescriptor>
 </md:EntityDescriptor>

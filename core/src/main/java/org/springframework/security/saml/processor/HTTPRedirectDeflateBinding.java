@@ -14,8 +14,11 @@
  */
 package org.springframework.security.saml.processor;
 
+import java.util.List;
+
 import org.opensaml.common.binding.security.SAMLProtocolMessageXMLSignatureSecurityPolicyRule;
 import org.opensaml.common.xml.SAMLConstants;
+import org.opensaml.liberty.binding.decoding.MhvCustomURIComparator;
 import org.opensaml.saml2.binding.decoding.HTTPRedirectDeflateDecoder;
 import org.opensaml.saml2.binding.encoding.HTTPRedirectDeflateEncoder;
 import org.opensaml.saml2.binding.security.SAML2HTTPRedirectDeflateSignatureRule;
@@ -31,8 +34,6 @@ import org.opensaml.xml.parse.ParserPool;
 import org.opensaml.xml.signature.SignatureTrustEngine;
 import org.springframework.security.saml.context.SAMLMessageContext;
 
-import java.util.List;
-
 /**
  * Http redirect binding.
  *
@@ -40,49 +41,57 @@ import java.util.List;
  */
 public class HTTPRedirectDeflateBinding extends SAMLBindingImpl {
 
-    /**
-     * Creates binding with default encoder and decoder.
-     *
-     * @param parserPool parser pool
-     */
-    public HTTPRedirectDeflateBinding(ParserPool parserPool) {
-        this(new HTTPRedirectDeflateDecoder(parserPool), new HTTPRedirectDeflateEncoder());
-    }
+	/**
+	 * Creates binding with default encoder and decoder.
+	 *
+	 * @param parserPool
+	 *            parser pool
+	 */
+	public HTTPRedirectDeflateBinding(ParserPool parserPool) {
+		this(new HTTPRedirectDeflateDecoder(parserPool), new HTTPRedirectDeflateEncoder());
 
-    /**
-     * Constructor with customized encoder and decoder
-     *
-     * @param decoder decoder
-     * @param encoder encoder
-     */
-    public HTTPRedirectDeflateBinding(MessageDecoder decoder, MessageEncoder encoder) {
-        super(decoder, encoder);
-    }
+		// override URI comparator
+		HTTPRedirectDeflateDecoder messageDecoder = (HTTPRedirectDeflateDecoder) this.getMessageDecoder();
+		messageDecoder.setURIComparator(new MhvCustomURIComparator());
+	}
 
-    public boolean supports(InTransport transport) {
-        if (transport instanceof HTTPInTransport) {
-            HTTPTransport t = (HTTPTransport) transport;
-            return "GET".equalsIgnoreCase(t.getHTTPMethod()) && (t.getParameterValue("SAMLRequest") != null || t.getParameterValue("SAMLResponse") != null);
-        } else {
-            return false;
-        }
-    }
+	/**
+	 * Constructor with customized encoder and decoder
+	 *
+	 * @param decoder
+	 *            decoder
+	 * @param encoder
+	 *            encoder
+	 */
+	public HTTPRedirectDeflateBinding(MessageDecoder decoder, MessageEncoder encoder) {
+		super(decoder, encoder);
+	}
 
-    public boolean supports(OutTransport transport) {
-        return transport instanceof HTTPOutTransport;
-    }
+	public boolean supports(InTransport transport) {
+		if (transport instanceof HTTPInTransport) {
+			HTTPTransport t = (HTTPTransport) transport;
+			return "GET".equalsIgnoreCase(t.getHTTPMethod())
+					&& (t.getParameterValue("SAMLRequest") != null || t.getParameterValue("SAMLResponse") != null);
+		} else {
+			return false;
+		}
+	}
 
-    public String getBindingURI() {
-        return SAMLConstants.SAML2_REDIRECT_BINDING_URI;
-    }
+	public boolean supports(OutTransport transport) {
+		return transport instanceof HTTPOutTransport;
+	}
 
-    @Override
-    public void getSecurityPolicy(List<SecurityPolicyRule> securityPolicy, SAMLMessageContext samlContext) {
+	public String getBindingURI() {
+		return SAMLConstants.SAML2_REDIRECT_BINDING_URI;
+	}
 
-        SignatureTrustEngine engine = samlContext.getLocalTrustEngine();
-        securityPolicy.add(new SAML2HTTPRedirectDeflateSignatureRule(engine));
-        securityPolicy.add(new SAMLProtocolMessageXMLSignatureSecurityPolicyRule(engine));
+	@Override
+	public void getSecurityPolicy(List<SecurityPolicyRule> securityPolicy, SAMLMessageContext samlContext) {
 
-    }
+		SignatureTrustEngine engine = samlContext.getLocalTrustEngine();
+		securityPolicy.add(new SAML2HTTPRedirectDeflateSignatureRule(engine));
+		securityPolicy.add(new SAMLProtocolMessageXMLSignatureSecurityPolicyRule(engine));
+
+	}
 
 }

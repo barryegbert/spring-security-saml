@@ -102,7 +102,7 @@
 					<path>/spring-security-saml2-sample</path>
 					<port>8080</port>
 					<httpsPort>8443</httpsPort>
-					<keystoreFile>C:\data\tools\vagrant\installs\MHV.jks</keystoreFile>
+					<keystoreFile>C:\Users\vhaislegberb\Downloads\MHV.jks</keystoreFile>
 					<keystorePass>changeit</keystorePass>
 				</configuration>
 			</plugin>

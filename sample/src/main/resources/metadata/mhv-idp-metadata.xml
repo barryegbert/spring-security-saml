@@ -2,41 +2,50 @@
 <md:EntityDescriptor entityID="MHV-IDP"
 	xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
 	<md:IDPSSODescriptor ID="MHV-IDP"
-		WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+		WantAuthnRequestsSigned="false"
+		protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 		<md:KeyDescriptor use="signing">
 			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 				<ds:X509Data>
-					<ds:X509Certificate>MIIDhTCCAm0CBgFcX5GdszANBgkqhkiG9w0BAQUFADCBhTEeMBwGA1UEAwwVTUhWIElkZW50aXR5
-						IFByb3ZpZGVyMRAwDgYDVQQLDAdWQSBPSSZUMREwDwYDVQQKDAhNSFYgRVBNTzEXMBUGA1UEBwwO
-						U2FsdCBMYWtlIENpdHkxDTALBgNVBAgMBFV0YWgxFjAUBgNVBAYTDVVuaXRlZCBTdGF0ZXMwHhcN
-						MTcwNTMxMTczMzE3WhcNMTgwNTIyMTczMzE3WjCBhTEeMBwGA1UEAwwVTUhWIElkZW50aXR5IFBy
-						b3ZpZGVyMRAwDgYDVQQLDAdWQSBPSSZUMREwDwYDVQQKDAhNSFYgRVBNTzEXMBUGA1UEBwwOU2Fs
-						dCBMYWtlIENpdHkxDTALBgNVBAgMBFV0YWgxFjAUBgNVBAYTDVVuaXRlZCBTdGF0ZXMwggEiMA0G
-						CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCDPH9IYck28FSGWD1z1oCG6MunmNqddVcHskLNH95W
-						MEBghvF3arYxTqc3r2tiVCJyh5zrVmPpYenEfwOedqXR0YXfyFc+LxuGsQw2+JaX2LiYHTtjGsvm
-						1Q03o/+z04yeHuYf7kmP0siXYitAK0PTRfVgHNqUNlfP8YznYiEYmAeIbIezGVlG0dVpqQ3L7xzm
-						lAjnEdWWl+UVaoGpAhXa8I7MlS6U+vLs6+2afPt/CCv6e5CGGtZTAhOP4ZlmHVJnuRNdrcvSAYhS
-						9zX1yeFBdAzYXWFGWx9S6O9P5mvdeoUlhQl51JumkJkTlJvtw9wttG9FyqN9REk319caylW/AgMB
-						AAEwDQYJKoZIhvcNAQEFBQADggEBAHHpcC3lXOXm8eY89o9mKwbQLEzrUamk4G3HOR2f1EBhm8x6
-						UQAmZ5SxdyShyPBnZTVBclHEMZAbE4ovoIUvHizFUyTh1txYDN6Svpa2nCB772VfPDVixBNJpIHP
-						fActLoAwc3dm90kR3Hx6Bbir0lSgF1W+EqSlCHfc23K6MLAsj1MSj+HBHk1KbD4ZTxyAhbEFJRKX
-						fERs4nrgaX/L1C6zwZgBrawtzrVsAoSBk+yya2gtHHAkNNWJv3zgJ4qdcIuCGx0+vbwAl6Puc2aA
-						znF5unTt53vnoekWXpemqKTOhNaEoFFYCo4riq8QJe5zdv1GbSoCaVf8i2kAU8SNWrY=
+					<ds:X509Certificate>MIIFVDCCBDygAwIBAgIHPQAAAADuJjANBgkqhkiG9w0BAQsFADBKMRMwEQYKCZImiZPyLGQBGRYD
+						Z292MRIwEAYKCZImiZPyLGQBGRYCdmExHzAdBgNVBAMTFlZBLUludGVybmFsLVMyLUlDQTEtdjEw
+						HhcNMTcwODIxMTUwMTIyWhcNMjAwODIwMTUwMTIyWjCBvjELMAkGA1UEBhMCVVMxFzAVBgNVBAgT
+						DlNvdXRoIENhcm9saW5hMRMwEQYDVQQHEwpDaGFybGVzdG9uMSswKQYDVQQKEyJUaGUgRGVwYXJ0
+						bWVudCBvZiBWZXRlcmFucyBBZmZhaXJzMS4wLAYDVQQLEyVOZXcgTW9kZWxzIGluIEhlYWx0aGNh
+						cmUsIE1IViBQcm9ncmFtMSQwIgYDVQQDExttaHZpZHAtc3lzYi5teWhlYWx0aC52YS5nb3YwggEi
+						MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDVYNI8b6ztzW5uQB0vQfo86UK6DJg6RpRcrVkj
+						Ih+sEo9Zr4v47AjdgHP8f74KPmBFxWWVQ1Vw0+V8P9oHa372Bn16PwiMKPzS5PyhFM/6qkvDht1U
+						idEvbYuDhd500CkTI823V82y0WZqyJ2toG6KynBf4U8+yOLWY0mWpK5OhPqw02qL5fYzvj1CU+JD
+						OmoBk+XP2SpT1UmP9+oS20vJ0Azwg5YMd73BCfD483Q0yMgAywUo8Jd/eecw5f8hhEOjWOfG8Dox
+						O+MFBDd/FFfanPy8uWkZj11+D3pv0YJpyBzg7iISCyzpUKtJEgptJlMrF9/nQP3QA0fUtSzvyguh
+						AgMBAAGjggHIMIIBxDAdBgNVHQ4EFgQUyANFYXQWgJqjtJiYQKe9m3OcZ9kwHwYDVR0jBBgwFoAU
+						G23f6z3l4g3vFrHQ3l9YGlbL5OwwSQYDVR0fBEIwQDA+oDygOoY4aHR0cDovL2NybC5wa2kudmEu
+						Z292L3BraS9jcmwvVkEtSW50ZXJuYWwtUzItSUNBMS12MS5jcmwwewYIKwYBBQUHAQEEbzBtMEcG
+						CCsGAQUFBzAChjtodHRwOi8vYWlhLnBraS52YS5nb3YvcGtpL2FpYS92YS9WQS1JbnRlcm5hbC1T
+						Mi1JQ0ExLXYxLmNlcjAiBggrBgEFBQcwAYYWaHR0cDovL29jc3AucGtpLnZhLmdvdjALBgNVHQ8E
+						BAMCBaAwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIgcjDM4H58AaBpZ8NhOCBCIXCqksGg4Kf
+						YIHgi1ICAWQCARIwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMCcGCSsGAQQBgjcVCgQa
+						MBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwJgYDVR0RBB8wHYIbbWh2aWRwLXN5c2IubXloZWFs
+						dGgudmEuZ292MA0GCSqGSIb3DQEBCwUAA4IBAQC1ww/l1nAXld9UGQ8he0XrOTKCndSJjEgVtCpe
+						C4ShZgBQ2nuiGn/FzxzM8Rq1YzAVosLvi5DJCNFiZh5JVOqgu3r2DZoPYXIaftAt6EkmoAiuv8WW
+						V585Z1M85PhiyzmFoRgLq+VPAx3Xvmem+fczPhnTJgocMjhR7syPiXUYBqBMc6vp2izH51VYyHx2
+						vNNC93AO08bZDBBis3Bf2P6uNiSnm9nNMTXGk0tv8th5ys/tGH3mumxR8RF200RtRIPLcGZeO8og
+						vZvSfECGyKYnjfPley2yGQRuU72ChmR9AzPbDhnDC5zWEmOQjPNxy/lFvwkDNGfMZORk8QTAJ+CU
 					</ds:X509Certificate>
 				</ds:X509Data>
 			</ds:KeyInfo>
 		</md:KeyDescriptor>
 		<md:SingleLogoutService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-			Location="https://local.myhealth.va.gov/mhv-portal-web/c/portal/saml/slo" />
+			Location="https://liferay.local/mhv-portal-web/c/portal/saml/slo" />
 		<md:SingleLogoutService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-			Location="https://local.myhealth.va.gov/mhv-portal-web/c/portal/saml/slo" />
+			Location="https://liferay.local/mhv-portal-web/c/portal/saml/slo" />
 		<md:SingleSignOnService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-			Location="https://local.myhealth.va.gov/mhv-portal-web/c/portal/saml/sso" />
+			Location="https://liferay.local/mhv-portal-web/c/portal/saml/sso" />
 		<md:SingleSignOnService
 			Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-			Location="https://local.myhealth.va.gov/mhv-portal-web/c/portal/saml/sso" />
+			Location="https://liferay.local/mhv-portal-web/c/portal/saml/sso" />
 	</md:IDPSSODescriptor>
 </md:EntityDescriptor>

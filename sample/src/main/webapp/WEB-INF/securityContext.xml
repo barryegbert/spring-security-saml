@@ -179,7 +179,7 @@
                             </constructor-arg>
                             <constructor-arg>
                                 <bean class="org.opensaml.util.resource.ClasspathResource">
-                                    <constructor-arg value="/metadata/mhv-intb-metadata.xml"/>
+                                    <constructor-arg value="/metadata/mhv-idp-metadata.xml"/>
                                 </bean>
                             </constructor-arg>
                             <property name="parserPool" ref="parserPool"/>
